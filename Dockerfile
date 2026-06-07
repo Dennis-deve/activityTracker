@@ -37,6 +37,9 @@ RUN npm ci --production=false 2>/dev/null || true
 # Copy application files
 COPY . .
 
+# Create .env from example so Laravel can initialize during build
+RUN cp .env.example .env
+
 # Build assets and finalize
 RUN composer dump-autoload --optimize --no-dev \
     && npm run build 2>/dev/null || true \
