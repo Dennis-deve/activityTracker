@@ -74,42 +74,6 @@ A web application for tracking daily activities of an Applications Support Team.
 | Member | grace@team.com    | password  |
 | Member | samuel@team.com   | password  |
 
-## Project Structure
-
-```
-activity-tracker/
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/       # Application controllers
-│   │   └── Middleware/        # Role-based access control
-│   └── Models/                # Data models
-├── database/
-│   ├── migrations/            # Schema definitions
-│   └── seeders/               # Sample data
-├── resources/views/           # UI templates
-├── public/
-│   ├── css/                   # Stylesheets
-│   └── js/                    # Client-side scripts
-├── routes/                    # Route definitions
-├── Dockerfile                 # Production deployment
-├── docker-compose.yml         # Docker orchestration
-└── docker/
-    ├── nginx.conf             # Nginx configuration
-    └── supervisord.conf       # Process management
-```
-
-## Docker Deployment
-
-```bash
-docker-compose up -d --build
-```
-
-The app will be available at `http://localhost`.
-
-## License
-
-This project is proprietary software.
-
 ## Author
 
 **Dennis Samuel Asante-Asare**
