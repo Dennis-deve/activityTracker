@@ -1,6 +1,6 @@
 # Activity Tracker
 
-A modern Laravel web application for tracking daily activities of an Applications Support Team. Features status updates, personnel tracking, daily handover views, and historical reporting.
+A web application for tracking daily activities of an Applications Support Team. Features status updates, personnel tracking, daily handover views, and historical reporting.
 
 ## Features
 
@@ -15,16 +15,15 @@ A modern Laravel web application for tracking daily activities of an Application
 
 ## Tech Stack
 
-- **Backend**: PHP 8.x, Laravel 13
-- **Database**: SQLite (zero-configuration)
-- **Frontend**: Blade templates, vanilla CSS (custom design system), vanilla JavaScript
+- **Backend**: PHP 8.x
+- **Database**: SQLite
+- **Frontend**: HTML, CSS, JavaScript
 - **Fonts**: Inter (Google Fonts)
 
 ## Requirements
 
 - PHP 8.2 or higher
 - Composer
-- Node.js & npm (for asset compilation, optional)
 
 ## Installation
 
@@ -34,7 +33,7 @@ A modern Laravel web application for tracking daily activities of an Application
    cd activityTracker
    ```
 
-2. **Install PHP dependencies**
+2. **Install dependencies**
    ```bash
    composer install
    ```
@@ -81,40 +80,22 @@ A modern Laravel web application for tracking daily activities of an Application
 activity-tracker/
 ├── app/
 │   ├── Http/
-│   │   ├── Controllers/
-│   │   │   ├── ActivityController.php       # Activity CRUD (admin)
-│   │   │   ├── ActivityUpdateController.php # Status updates
-│   │   │   ├── AuthController.php           # Login/register/logout
-│   │   │   ├── DashboardController.php      # Daily activity view
-│   │   │   ├── HandoverController.php       # Activity assignment
-│   │   │   ├── ReportController.php         # Reports & CSV export
-│   │   │   └── UserController.php           # Team member management
-│   │   └── Middleware/
-│   │       └── AdminMiddleware.php          # Role-based access control
-│   └── Models/
-│       ├── Activity.php
-│       ├── ActivityUpdate.php
-│       ├── DailyActivityLog.php
-│       └── User.php
+│   │   ├── Controllers/       # Application controllers
+│   │   └── Middleware/        # Role-based access control
+│   └── Models/                # Data models
 ├── database/
-│   ├── migrations/                          # Schema definitions
-│   └── seeders/
-│       └── DatabaseSeeder.php               # Sample data
-├── resources/views/
-│   ├── layouts/                             # App & auth layouts
-│   ├── activities/                          # Activity CRUD views
-│   ├── auth/                                # Login & register
-│   ├── reports/                             # Reporting view
-│   ├── users/                               # User management views
-│   └── dashboard.blade.php                  # Main dashboard
-├── public/css/app.css                       # Design system (1500+ lines)
-├── public/js/app.js                         # Theme toggle, modals, interactions
-├── routes/web.php                           # Route definitions
-├── Dockerfile                               # Production deployment
-├── docker-compose.yml                       # Docker orchestration
+│   ├── migrations/            # Schema definitions
+│   └── seeders/               # Sample data
+├── resources/views/           # UI templates
+├── public/
+│   ├── css/                   # Stylesheets
+│   └── js/                    # Client-side scripts
+├── routes/                    # Route definitions
+├── Dockerfile                 # Production deployment
+├── docker-compose.yml         # Docker orchestration
 └── docker/
-    ├── nginx.conf                           # Nginx configuration
-    └── supervisord.conf                     # Process management
+    ├── nginx.conf             # Nginx configuration
+    └── supervisord.conf       # Process management
 ```
 
 ## Docker Deployment
@@ -124,14 +105,6 @@ docker-compose up -d --build
 ```
 
 The app will be available at `http://localhost`.
-
-## Screenshots
-
-### Dashboard
-The daily activity view shows all activities with status badges, assigned personnel, update timelines, and quick-action buttons.
-
-### Reports
-Filter and export activity data by date range, activity type, status, and team member.
 
 ## License
 

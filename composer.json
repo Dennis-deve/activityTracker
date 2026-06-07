@@ -1,10 +1,10 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/laravel",
+    "name": "dennis-asante-asare/activity-tracker",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
+    "description": "Applications Support Team Activity Tracker",
+    "keywords": ["activity-tracker", "support-team"],
+    "license": "proprietary",
     "require": {
         "php": "^8.3",
         "laravel/framework": "^13.8",
