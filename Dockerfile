@@ -47,6 +47,9 @@ RUN composer dump-autoload --optimize --no-dev \
     && php artisan route:cache \
     && php artisan view:cache
 
+# Remove .env so Laravel reads from Railway's environment variables at runtime
+RUN rm .env
+
 # Create SQLite database directory
 RUN mkdir -p /var/www/html/database \
     && touch /var/www/html/database/database.sqlite \
