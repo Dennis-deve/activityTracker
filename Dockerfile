@@ -52,6 +52,11 @@ RUN mkdir -p /var/www/html/database \
     && chmod -R 775 /var/www/html/bootstrap/cache \
     && chmod 664 /var/www/html/database/database.sqlite
 
+# Create supervisord log directory
+RUN mkdir -p /var/log/supervisor \
+    && chown -R root:root /var/log/supervisor \
+    && chmod 755 /var/log/supervisor
+
 # Copy nginx and supervisor configs
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
 COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
