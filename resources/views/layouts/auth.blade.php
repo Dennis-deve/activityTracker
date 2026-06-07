@@ -22,6 +22,9 @@
             </div>
             @yield('content')
         </div>
+        <footer class="auth-footer">
+            <p>&copy; {{ date('Y') }} Dennis Samuel Asante-Asare. All rights reserved.</p>
+        </footer>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

@@ -1,58 +1,142 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Activity Tracker
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern Laravel web application for tracking daily activities of an Applications Support Team. Features status updates, personnel tracking, daily handover views, and historical reporting.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Daily Activity Dashboard** — View and manage all activities for any given day with status indicators and assignment tracking
+- **Status Updates & Audit Trail** — Record status changes (done/pending) with remarks, timestamps, and personnel details
+- **Handover Management** — Assign pending activities to the next person on shift with one click
+- **Activity Management** — Admins can create, edit, and deactivate activity templates
+- **Reporting & Export** — Filter reports by date range, activity, status, or team member, and export to CSV
+- **Team Management** — Admins manage team members, roles, and departments
+- **Dark/Light Mode** — Toggle between themes with a sleek, modern UI
+- **Responsive Design** — Works on desktop, tablet, and mobile
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend**: PHP 8.x, Laravel 13
+- **Database**: SQLite (zero-configuration)
+- **Frontend**: Blade templates, vanilla CSS (custom design system), vanilla JavaScript
+- **Fonts**: Inter (Google Fonts)
 
-## Learning Laravel
+## Requirements
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.2 or higher
+- Composer
+- Node.js & npm (for asset compilation, optional)
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Dennis-deve/activityTracker.git
+   cd activityTracker
+   ```
 
-## Agentic Development
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+3. **Configure environment**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-```bash
-composer require laravel/boost --dev
+4. **Set up the database**
+   ```bash
+   touch database/database.sqlite
+   php artisan migrate
+   ```
 
-php artisan boost:install
+5. **Seed sample data**
+   ```bash
+   php artisan db:seed
+   ```
+
+6. **Start the development server**
+   ```bash
+   php artisan serve
+   ```
+
+7. **Open in browser**
+   ```
+   http://127.0.0.1:8000
+   ```
+
+## Default Login Credentials
+
+| Role   | Email             | Password  |
+|--------|-------------------|-----------|
+| Admin  | admin@team.com    | password  |
+| Member | daniel@team.com   | password  |
+| Member | grace@team.com    | password  |
+| Member | samuel@team.com   | password  |
+
+## Project Structure
+
+```
+activity-tracker/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── ActivityController.php       # Activity CRUD (admin)
+│   │   │   ├── ActivityUpdateController.php # Status updates
+│   │   │   ├── AuthController.php           # Login/register/logout
+│   │   │   ├── DashboardController.php      # Daily activity view
+│   │   │   ├── HandoverController.php       # Activity assignment
+│   │   │   ├── ReportController.php         # Reports & CSV export
+│   │   │   └── UserController.php           # Team member management
+│   │   └── Middleware/
+│   │       └── AdminMiddleware.php          # Role-based access control
+│   └── Models/
+│       ├── Activity.php
+│       ├── ActivityUpdate.php
+│       ├── DailyActivityLog.php
+│       └── User.php
+├── database/
+│   ├── migrations/                          # Schema definitions
+│   └── seeders/
+│       └── DatabaseSeeder.php               # Sample data
+├── resources/views/
+│   ├── layouts/                             # App & auth layouts
+│   ├── activities/                          # Activity CRUD views
+│   ├── auth/                                # Login & register
+│   ├── reports/                             # Reporting view
+│   ├── users/                               # User management views
+│   └── dashboard.blade.php                  # Main dashboard
+├── public/css/app.css                       # Design system (1500+ lines)
+├── public/js/app.js                         # Theme toggle, modals, interactions
+├── routes/web.php                           # Route definitions
+├── Dockerfile                               # Production deployment
+├── docker-compose.yml                       # Docker orchestration
+└── docker/
+    ├── nginx.conf                           # Nginx configuration
+    └── supervisord.conf                     # Process management
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## Docker Deployment
 
-## Contributing
+```bash
+docker-compose up -d --build
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+The app will be available at `http://localhost`.
 
-## Code of Conduct
+## Screenshots
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Dashboard
+The daily activity view shows all activities with status badges, assigned personnel, update timelines, and quick-action buttons.
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Reports
+Filter and export activity data by date range, activity type, status, and team member.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is proprietary software.
+
+## Author
+
+**Dennis Samuel Asante-Asare**

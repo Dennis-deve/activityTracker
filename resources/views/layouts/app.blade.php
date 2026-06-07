@@ -98,6 +98,10 @@
             @endif
 
             <div class="content">@yield('content')</div>
+
+            <footer class="app-footer">
+                <p>&copy; {{ date('Y') }} Dennis Samuel Asante-Asare. All rights reserved.</p>
+            </footer>
         </main>
     </div>
     <div class="sidebar-overlay" id="sidebar-overlay"></div>

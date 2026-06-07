@@ -1423,6 +1423,25 @@ select.form-input {
     color: var(--primary-500);
 }
 
+/* ===== Footer ===== */
+.app-footer {
+    text-align: center;
+    padding: var(--space-lg) var(--space-xl);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.auth-footer {
+    text-align: center;
+    padding: var(--space-md) 0 0;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.78rem;
+    font-weight: 400;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 1024px) {
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
