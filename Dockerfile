@@ -43,7 +43,6 @@ RUN cp .env.example .env
 # Build assets and finalize
 RUN composer dump-autoload --optimize --no-dev \
     && npm run build 2>/dev/null || true \
-    && php artisan config:cache \
     && php artisan route:cache \
     && php artisan view:cache
 
